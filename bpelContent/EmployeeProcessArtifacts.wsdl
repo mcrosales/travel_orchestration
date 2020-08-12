@@ -21,7 +21,10 @@
             <element name="EmployeeProcessRequest">
                 <complexType>
                     <sequence>
-                        <element name="input" type="string"/>
+                    	<element name="identifier" type="string" minOccurs="1"/>
+                        <element name="name" type="string"/>
+                        <element name="lastName" type="string"/>
+                        <element name="department" type="string"/>
                     </sequence>
                 </complexType>
             </element>

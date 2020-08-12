@@ -37,6 +37,8 @@
           -->
         <bpel:variable name="output"
                   messageType="tns:EmployeeProcessResponseMessage"/>
+        
+        
     </bpel:variables>
 
     <!-- ================================================================= -->         
@@ -64,8 +66,9 @@
                 <bpel:to variable="output" part="payload"></bpel:to>
             </bpel:copy>
             <bpel:copy>
-                <bpel:from part="payload" variable="input">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:input]]></bpel:query>
+                <bpel:from>
+                    <bpel:literal xml:space="preserve">Economy
+</bpel:literal>
                 </bpel:from>
                 <bpel:to part="payload" variable="output">
                     <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:result]]></bpel:query>
