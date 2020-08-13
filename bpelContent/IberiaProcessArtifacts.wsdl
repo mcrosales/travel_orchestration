@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<definitions name="IberiaProcess"
+        targetNamespace="http://iberiaProcess"
+        xmlns:tns="http://iberiaProcess"
+        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        >
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of services participating in this BPEL process 
+     The default output of the BPEL designer uses strings as input and 
+     output to the BPEL Process. But you can define or import any XML 
+     Schema type and us them as part of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <types>  
+        <schema attributeFormDefault="unqualified" 
+                elementFormDefault="qualified" 
+                targetNamespace="http://iberiaProcess" 
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                >
+                
+            <element name="IberiaProcessRequest">
+                <complexType>
+                    <sequence>
+                        <element name="travelOrigin" type="string" />
+                        <element name="travelDestination" type="string" />
+                        <element name="departureDate" type="date" />
+                        <element name="returnDate" type="date" />
+                        <element name="employeeStatus" type="string" />
+                    </sequence>
+                </complexType>
+            </element>
+                  
+            <element name="IberiaProcessResponse">
+                <complexType>
+                    <sequence>
+                        <element name="flightNumber" type="string"/>
+                        <element name="price" type="float"/>
+                        <element name="departureDateTime" type="dateTime" />
+                        <element name="returnDateTime" type="dateTime" />
+                    </sequence>
+                </complexType>
+            </element>
+            
+        </schema>
+    </types>
+  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="IberiaProcessRequestMessage">
+        <part name="payload" element="tns:IberiaProcessRequest"/>
+    </message>
+    
+    <message name="IberiaProcessResponseMessage">
+        <part name="payload" element="tns:IberiaProcessResponse"/>
+    </message>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- portType implemented by the IberiaProcess BPEL process -->
+    <portType name="IberiaProcess">
+        <operation name="initiate">
+            <input message="tns:IberiaProcessRequestMessage"/>
+        </operation>
+    </portType>
+
+    <!-- portType implemented by the requester of IberiaProcess BPEL process 
+         for asynchronous callback purposes
+         -->
+    <portType name="IberiaProcessCallback">
+        <operation name="onResult">
+            <input message="tns:IberiaProcessResponseMessage"/>
+        </operation>
+    </portType>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+         the IberiaProcess partnerLinkType binds the provider and
+         requester portType into an asynchronous conversation.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="IberiaProcess">
+        <plnk:role name="IberiaProcessProvider" portType="tns:IberiaProcess"/>
+        <plnk:role name="IberiaProcessRequester" portType="tns:IberiaProcessCallback"/>
+    </plnk:partnerLinkType>   
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="IberiaProcessBinding" type="tns:IberiaProcess">
+        <soap:binding style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="initiate">
+            <soap:operation
+    			soapAction="http://iberiaProcess/initiate"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+    </binding>
+
+    <binding name="IberiaProcessCallbackBinding" type="tns:IberiaProcessCallback">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="onResult">
+            <soap:operation
+    			soapAction="http://iberiaProcess/onResult"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+    </binding>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="IberiaProcessService">
+        <port name="IberiaProcessPort" binding="tns:IberiaProcessBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/IberiaProcess"/>
+        </port>
+    </service>
+
+    <service name="IberiaProcessServiceCallback">
+        <port name="IberiaProcessPortCallbackPort" binding="tns:IberiaProcessCallbackBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/IberiaProcessCallback"/>
+        </port>
+    </service>
+</definitions>
