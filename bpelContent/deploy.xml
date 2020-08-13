@@ -9,6 +9,8 @@
     </provide>
   </process>
   <process name="iberiaProcess:IberiaProcess">
+    <active>true</active>
+    <retired>false</retired>
     <process-events generate="all"/>
     <provide partnerLink="client">
       <service name="iberiaProcess:IberiaProcessService" port="IberiaProcessPort"/>
@@ -18,12 +20,20 @@
     </invoke>
   </process>
   <process name="travelProcess:TravelProcess">
+    <active>true</active>
+    <retired>false</retired>
     <process-events generate="all"/>
     <provide partnerLink="client">
       <service name="travelProcess:TravelProcessService" port="TravelProcessPort"/>
     </provide>
+    <provide partnerLink="iberia">
+      <service name="iberiaProcess:IberiaProcessServiceCallback" port="IberiaProcessPortCallbackPort"/>
+    </provide>
     <invoke partnerLink="employee">
       <service name="employeeProcess:EmployeeProcessService" port="EmployeeProcessPort"/>
+    </invoke>
+    <invoke partnerLink="iberia">
+      <service name="iberiaProcess:IberiaProcessService" port="IberiaProcessPort"/>
     </invoke>
   </process>
 </deploy>
