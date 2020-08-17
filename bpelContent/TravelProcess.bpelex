@@ -22,7 +22,7 @@
   </extensions>
   <extensions>
     <extendedObject href="TravelProcess.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1597649926783"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1597652899604"/>
   </extensions>
   <extensions>
     <extendedObject href="TravelProcess.bpel#//@activity/@activities.2"/>
@@ -109,39 +109,75 @@
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
-  </extensions>
-  <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0/@copy.1"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
-  </extensions>
-  <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0/@copy.0"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
-  </extensions>
-  <extensions>
     <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.2"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity/@copy.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity/@copy.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
     <extendedObject href="TravelProcess.bpel#//@activity/@activities.4"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@copy.1"/>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity/@copy.4"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@copy.0"/>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@activity/@copy.5"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@copy.2"/>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity/@copy.1"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@copy.3"/>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity/@copy.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity/@copy.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity/@copy.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.4/@else/@activity/@copy.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0/@copy.0"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>
