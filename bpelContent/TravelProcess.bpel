@@ -108,6 +108,14 @@
                     </bpel:query>
                 </bpel:to>
             </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:department]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="employeeRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ns1:department]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
         </bpel:assign>
         <bpel:invoke name="InvokeEmployeeService" partnerLink="employee" operation="process" portType="ns1:EmployeeProcess" inputVariable="employeeRequest" outputVariable="employeeResponse"></bpel:invoke>
         
@@ -180,8 +188,8 @@
   <tns:price>0.0</tns:price>
   <tns:departureDateTime>2001-12-31T12:00:00</tns:departureDateTime>
   <tns:returnDateTime>2001-12-31T12:00:00</tns:returnDateTime>
-</tns:TravelProcessResponse>
-</bpel:literal></bpel:from>
+<tns:employeeStatus>status</tns:employeeStatus>
+</tns:TravelProcessResponse></bpel:literal></bpel:from>
                 <bpel:to variable="output" part="payload"></bpel:to>
             </bpel:copy>
             <bpel:copy>
@@ -218,13 +226,15 @@
                     </bpel:to>
                 </bpel:copy>
                 <bpel:copy>
-                    <bpel:from part="payload" variable="iberiaResponse">
+                    <bpel:from part="payload" variable="employeeResponse">
                         <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
-                            <![CDATA[iberia:returnDateTime]]>
+                            <![CDATA[ns1:result]]>
                         </bpel:query>
                     </bpel:from>
                     <bpel:to part="payload" variable="output">
-                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:returnDateTime]]></bpel:query>
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                            <![CDATA[tns:employeeStatus]]>
+                        </bpel:query>
                     </bpel:to>
                 </bpel:copy>
             </bpel:assign>
@@ -237,8 +247,8 @@
   <tns:price>0.0</tns:price>
   <tns:departureDateTime>2001-12-31T12:00:00</tns:departureDateTime>
   <tns:returnDateTime>2001-12-31T12:00:00</tns:returnDateTime>
-</tns:TravelProcessResponse>
-</bpel:literal></bpel:from>
+<tns:employeeStatus>status</tns:employeeStatus>
+</tns:TravelProcessResponse></bpel:literal></bpel:from>
                         <bpel:to variable="output" part="payload"></bpel:to>
                     </bpel:copy>
                     <bpel:copy>
@@ -281,6 +291,7 @@
                             <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:airline]]></bpel:query>
                         </bpel:to>
                     </bpel:copy>
+                    
                 </bpel:assign>
             </bpel:else>
         </bpel:if>

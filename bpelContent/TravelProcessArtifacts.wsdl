@@ -38,6 +38,7 @@
                     <sequence>
                     	<element name="airline" type="string"/>
                         <element name="flightNumber" type="string"/>
+                        <element name="employeeStatus" type="string"/>
                         <element name="price" type="float"/>
                         <element name="departureDateTime" type="dateTime" />
                         <element name="returnDateTime" type="dateTime" />
