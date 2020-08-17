@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<definitions name="VuelingProcess"
+        targetNamespace="http://vueling"
+        xmlns:tns="http://vueling"
+        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        >
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of services participating in this BPEL process 
+     The default output of the BPEL designer uses strings as input and 
+     output to the BPEL Process. But you can define or import any XML 
+     Schema type and us them as part of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <types>  
+        <schema attributeFormDefault="unqualified" 
+                elementFormDefault="qualified" 
+                targetNamespace="http://vueling" 
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                >
+                
+            <element name="VuelingProcessRequest">
+                <complexType>
+                    <sequence>
+                        <element name="travelOrigin" type="string" />
+                        <element name="travelDestination" type="string" />
+                        <element name="departureDate" type="date" />
+                        <element name="returnDate" type="date" />
+                        <element name="employeeStatus" type="string" />
+                    </sequence>
+                </complexType>
+            </element>
+                  
+            <element name="VuelingProcessResponse">
+                <complexType>
+                    <sequence>
+                        <element name="flightNumber" type="string"/>
+                        <element name="price" type="float"/>
+                        <element name="departureDateTime" type="dateTime" />
+                        <element name="returnDateTime" type="dateTime" />
+                    </sequence>
+                </complexType>
+            </element>
+            
+        </schema>
+    </types>
+  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="VuelingProcessRequestMessage">
+        <part name="payload" element="tns:VuelingProcessRequest"/>
+    </message>
+    
+    <message name="VuelingProcessResponseMessage">
+        <part name="payload" element="tns:VuelingProcessResponse"/>
+    </message>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- portType implemented by the VuelingProcess BPEL process -->
+    <portType name="VuelingProcess">
+        <operation name="initiate">
+            <input message="tns:VuelingProcessRequestMessage"/>
+        </operation>
+    </portType>
+
+    <!-- portType implemented by the requester of VuelingProcess BPEL process 
+         for asynchronous callback purposes
+         -->
+    <portType name="VuelingProcessCallback">
+        <operation name="onResult">
+            <input message="tns:VuelingProcessResponseMessage"/>
+        </operation>
+    </portType>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+         the VuelingProcess partnerLinkType binds the provider and
+         requester portType into an asynchronous conversation.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="VuelingProcess">
+        <plnk:role name="VuelingProcessProvider" portType="tns:VuelingProcess"/>
+        <plnk:role name="VuelingProcessRequester" portType="tns:VuelingProcessCallback"/>
+    </plnk:partnerLinkType>   
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="VuelingProcessBinding" type="tns:VuelingProcess">
+        <soap:binding style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="initiate">
+            <soap:operation
+    			soapAction="http://vueling/initiate"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+    </binding>
+
+    <binding name="VuelingProcessCallbackBinding" type="tns:VuelingProcessCallback">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="onResult">
+            <soap:operation
+    			soapAction="http://vueling/onResult"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+    </binding>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="VuelingProcessService">
+        <port name="VuelingProcessPort" binding="tns:VuelingProcessBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/VuelingProcess"/>
+        </port>
+    </service>
+
+    <service name="VuelingProcessServiceCallback">
+        <port name="VuelingProcessPortCallbackPort" binding="tns:VuelingProcessCallbackBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/VuelingProcessCallback"/>
+        </port>
+    </service>
+</definitions>

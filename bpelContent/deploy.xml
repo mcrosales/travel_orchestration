@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:employeeProcess="http://employeeProcess" xmlns:iberiaProcess="http://iberiaProcess" xmlns:travelProcess="http://travelProcess">
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:employeeProcess="http://employeeProcess" xmlns:iberiaProcess="http://iberiaProcess" xmlns:travelProcess="http://travelProcess" xmlns:vueling="http://vueling">
   <process name="employeeProcess:EmployeeProcess">
     <active>true</active>
     <retired>false</retired>
@@ -29,11 +29,28 @@
     <provide partnerLink="iberia">
       <service name="iberiaProcess:IberiaProcessServiceCallback" port="IberiaProcessPortCallbackPort"/>
     </provide>
+    <provide partnerLink="vueling">
+      <service name="vueling:VuelingProcessServiceCallback" port="VuelingProcessPortCallbackPort"/>
+    </provide>
     <invoke partnerLink="employee">
       <service name="employeeProcess:EmployeeProcessService" port="EmployeeProcessPort"/>
     </invoke>
     <invoke partnerLink="iberia">
       <service name="iberiaProcess:IberiaProcessService" port="IberiaProcessPort"/>
+    </invoke>
+    <invoke partnerLink="vueling">
+      <service name="vueling:VuelingProcessService" port="VuelingProcessPort"/>
+    </invoke>
+  </process>
+  <process name="vueling:VuelingProcess">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="vueling:VuelingProcessService" port="VuelingProcessPort"/>
+    </provide>
+    <invoke partnerLink="client">
+      <service name="vueling:VuelingProcessServiceCallback" port="VuelingProcessPortCallbackPort"/>
     </invoke>
   </process>
 </deploy>
