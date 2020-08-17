@@ -76,44 +76,129 @@
 </bpel:literal></bpel:from>
                 <bpel:to variable="output" part="payload"></bpel:to>
             </bpel:copy>
-            <bpel:copy>
-                <bpel:from>
-                    <bpel:literal xml:space="preserve">IB-3066
-</bpel:literal>
-                </bpel:from>
-                <bpel:to part="payload" variable="output">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
-                        <![CDATA[tns:flightNumber]]>
-                    </bpel:query>
-                </bpel:to>
-            </bpel:copy>
-            <bpel:copy>
-                <bpel:from>
-                    <bpel:literal xml:space="preserve">133</bpel:literal>
-                </bpel:from>
-                <bpel:to part="payload" variable="output">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
-                        <![CDATA[tns:price]]>
-                    </bpel:query>
-                </bpel:to>
-            </bpel:copy>
-            <bpel:copy>
-                <bpel:from>
-                    <bpel:literal xml:space="preserve">2020-08-25T13:00:00</bpel:literal>
-                </bpel:from>
-                <bpel:to part="payload" variable="output">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:departureDateTime]]></bpel:query>
-                </bpel:to>
-            </bpel:copy>
-            <bpel:copy>
-                <bpel:from>
-                    <bpel:literal xml:space="preserve">2020-08-30T19:00:00</bpel:literal>
-                </bpel:from>
-                <bpel:to part="payload" variable="output">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:returnDateTime]]></bpel:query>
-                </bpel:to>
-            </bpel:copy>
+            
+            
+            
+            
         </bpel:assign>
+        <bpel:if name="CheckEmployeeTravelClass">
+            <bpel:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[$input.payload/tns:employeeStatus = "Economy"]]></bpel:condition>
+            <bpel:assign validate="no" name="AssignEconomy">
+                <bpel:copy>
+                    <bpel:from>
+                        <bpel:literal xml:space="preserve">133</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:price]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                
+                
+                <bpel:copy><bpel:from>
+                        <bpel:literal xml:space="preserve">IB-245</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:flightNumber]]></bpel:query>
+                    </bpel:to>
+                
+                </bpel:copy>
+                <bpel:copy><bpel:from>
+                        <bpel:literal xml:space="preserve">2020-08-31T14:00:00</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:departureDateTime]]></bpel:query>
+                    </bpel:to>
+                
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from>
+                        <bpel:literal xml:space="preserve">2020-09-15T18:00:00
+</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:returnDateTime]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                
+            </bpel:assign>
+        <bpel:elseif>
+                <bpel:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[$input.payload/tns:employeeStatus = "Bussiness"]]></bpel:condition>
+                <bpel:assign validate="no" name="AssignBussiness">
+                <bpel:copy>
+                    <bpel:from>
+                        <bpel:literal xml:space="preserve">270</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:price]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                
+                
+                <bpel:copy><bpel:from>
+                        <bpel:literal xml:space="preserve">IB-400</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:flightNumber]]></bpel:query>
+                    </bpel:to>
+                
+                </bpel:copy>
+                <bpel:copy><bpel:from>
+                        <bpel:literal xml:space="preserve">2020-08-31T14:00:00</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:departureDateTime]]></bpel:query>
+                    </bpel:to>
+                
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from>
+                        <bpel:literal xml:space="preserve">2020-09-15T18:00:00
+</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:returnDateTime]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                </bpel:assign>
+            </bpel:elseif><bpel:else>
+                <bpel:assign validate="no" name="AssignPrivate">
+                <bpel:copy>
+                    <bpel:from>
+                        <bpel:literal xml:space="preserve">1000</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:price]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                
+                
+                <bpel:copy><bpel:from>
+                        <bpel:literal xml:space="preserve">IB-999</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:flightNumber]]></bpel:query>
+                    </bpel:to>
+                
+                </bpel:copy>
+                <bpel:copy><bpel:from>
+                        <bpel:literal xml:space="preserve">2020-08-31T14:00:00</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:departureDateTime]]></bpel:query>
+                    </bpel:to>
+                
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from>
+                        <bpel:literal xml:space="preserve">2020-09-15T18:00:00
+</bpel:literal>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:returnDateTime]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                </bpel:assign>
+            </bpel:else></bpel:if>
         <bpel:invoke name="callbackClient" 
                 partnerLink="client"
                 portType="tns:IberiaProcessCallback"

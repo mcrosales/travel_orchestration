@@ -144,8 +144,10 @@
             </bpel:copy>
             
             <bpel:copy>
-                <bpel:from part="payload" variable="employeeResponse">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ns1:result]]></bpel:query>
+                <bpel:from part="payload" variable="iberiaResponse">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[iberia:flightNumber]]>
+                    </bpel:query>
                 </bpel:from>
                 <bpel:to part="payload" variable="output">
                     <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:result]]></bpel:query>

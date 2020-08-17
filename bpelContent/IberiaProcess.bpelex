@@ -17,35 +17,55 @@
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2"/>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.3"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
     <extendedObject href="IberiaProcess.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1597323169718"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1597642217093"/>
   </extensions>
   <extensions>
     <extendedObject href="IberiaProcess.bpel#//@activity/@activities.1"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.1/@copy.1"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
-  </extensions>
-  <extensions>
     <extendedObject href="IberiaProcess.bpel#//@activity/@activities.1/@copy.0"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.1/@copy.2"/>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@elseIf.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CaseExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@elseIf.0/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@else/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@activity/@copy.0"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.1/@copy.3"/>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@activity/@copy.2"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.1/@copy.4"/>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@activity/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="IberiaProcess.bpel#//@activity/@activities.2/@activity/@copy.3"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>
