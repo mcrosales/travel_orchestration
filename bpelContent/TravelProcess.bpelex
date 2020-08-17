@@ -22,7 +22,7 @@
   </extensions>
   <extensions>
     <extendedObject href="TravelProcess.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1597652899604"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1597653822270"/>
   </extensions>
   <extensions>
     <extendedObject href="TravelProcess.bpel#//@activity/@activities.2"/>
@@ -178,6 +178,10 @@
   </extensions>
   <extensions>
     <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="TravelProcess.bpel#//@activity/@activities.3/@activities.1/@activities.0/@copy.1"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>
