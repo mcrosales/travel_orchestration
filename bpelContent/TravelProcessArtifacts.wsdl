@@ -36,7 +36,11 @@
             <element name="TravelProcessResponse">
                 <complexType>
                     <sequence>
-                        <element name="result" type="string"/>
+                    	<element name="airline" type="string"/>
+                        <element name="flightNumber" type="string"/>
+                        <element name="price" type="float"/>
+                        <element name="departureDateTime" type="dateTime" />
+                        <element name="returnDateTime" type="dateTime" />
                     </sequence>
                 </complexType>
             </element>
