@@ -77,10 +77,9 @@
   <tns:price>0.0</tns:price>
   <tns:departureDate>2001-01-01</tns:departureDate>
   <tns:departureTime>12:00:00</tns:departureTime>
-  <tns:returnDate>2001-01-01</tns:returnDate>
+  <tns:returnDate>2019-01-01</tns:returnDate>
   <tns:returnTime>12:00:00</tns:returnTime>
-</tns:IberiaProcessResponse>
-</bpel:literal></bpel:from>
+</tns:IberiaProcessResponse></bpel:literal></bpel:from>
                 <bpel:to variable="output" part="payload"></bpel:to>
             </bpel:copy>
             
