@@ -40,8 +40,10 @@
                         <element name="flightNumber" type="string"/>
                         <element name="employeeStatus" type="string"/>
                         <element name="price" type="float"/>
-                        <element name="departureDateTime" type="dateTime" />
-                        <element name="returnDateTime" type="dateTime" />
+                        <element name="departureDate" type="date" />
+                        <element name="departureTime" type="time" />
+                        <element name="returnDate" type="date" />
+                        <element name="returnTime" type="time" />
                     </sequence>
                 </complexType>
             </element>
